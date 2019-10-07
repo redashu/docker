@@ -72,13 +72,13 @@ root@fire: ] cat  /etc/docker/daemon.json
 root@fire:~# systemctl daemon-reload 
 root@fire:~# systemctl restart docker
 
-
 ```
+
 <h2>  changing driver in RPM based system  </h2>
+
 ```
 [root@station233 sysconfig]# cat  /etc/sysconfig/docker-storage
 DOCKER_STORAGE_OPTIONS="--storage-driver devicemapper --graph=/mnt/go"
-
 root@fire:~# systemctl daemon-reload 
 root@fire:~# systemctl restart docker
 
