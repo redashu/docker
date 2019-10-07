@@ -59,14 +59,27 @@ docker.io/mysql         latest              b8fd9553f1f0        3 weeks ago     
 
 ```
 
-<b> changing storage driver in Ubuntu based system  </b>
+<b> changing storage driver in Debian based system  </b>
 
 ```
- cat  /etc/docker/daemon.json 
+root@fire: ] cat  /etc/docker/daemon.json 
 {
   "storage-driver": "overlay2",
   "data-root" :  "/mnt/go"
 }
 
+
+root@fire:~# systemctl daemon-reload 
+root@fire:~# systemctl restart docker
+
+
 ```
-<h2>  changing driver in Redhat based system  </h2>
+<h2>  changing driver in RPM based system  </h2>
+```
+[root@station233 sysconfig]# cat  /etc/sysconfig/docker-storage
+DOCKER_STORAGE_OPTIONS="--storage-driver devicemapper --graph=/mnt/go"
+
+root@fire:~# systemctl daemon-reload 
+root@fire:~# systemctl restart docker
+
+```
