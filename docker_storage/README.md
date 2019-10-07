@@ -24,26 +24,31 @@ root@fire:~# docker info  |   grep -i storage
 ```
 
 ## checking supported storage driver
+
 ```
 root@fire:~# grep -i overlay  /proc/filesystems 
 nodev	overlay
 root@fire:~# 
 root@fire:~# grep -i aufs  /proc/filesystems 
 nodev	aufs
+
 ```
 
 ## Changing  storage driver 
+
 <b> Every storage driver have its own storage management and layer system </b>  <br/>
 <i> so in case you have changed storage driver it you can not access existing images or containers </i>
 
 <h4> checking the existing driver  </h4>
+
 ```
 [root@fire ~]# docker info   |  grep -i storage
 Storage Driver: overlay2
 
 ```
 
-<h4> checking images  </h3>
+<h3> checking images  </h3>
+
 ```
 [root@station233 ~]# docker images
 REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
@@ -55,6 +60,7 @@ docker.io/mysql         latest              b8fd9553f1f0        3 weeks ago     
 ```
 
 <b> changing storage driver in Ubuntu based system  </b>
+
 ```
  cat  /etc/docker/daemon.json 
 {
