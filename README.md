@@ -25,3 +25,6 @@ docker released in December 21, 2013  <br/>
 ## study and software details 
 For offical website you can browse [docker docs](https://docs.docker.com/)  <br/>
 For docker images you can browser  [docker hub](https://about.gitlab.com/) <br/> 
+
+##  Bash Completion for Docker
+you can download it from [raw github docker ](https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker/) <br/>
