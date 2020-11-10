@@ -1,14 +1,11 @@
-# dockerfile
-## ARG in dockerfile 
-This variable will only be available during image build not after that 
-## you can replace this variable variable value 
-```
-[root@root]$ docker build -t test:v2 --build-arg var1=ftp .
-```
+# Windows Containers 
 
-## ENV in dockerfile 
-this variable can be used during image build time and also availabe in container  <br/>
-you can replace env during container run time after successful build
-```
- docker run --rm -e env_var=ashutoshh test:v6
-```
+## browse Windows repo 
+
+[microsoft repo] ('https://hub.docker.com/_/microsoft-powershell')
+
+## More links 
+
+[new microsoft link] ('https://hub.docker.com/_/microsoft-windows-servercore?tab=description')
+
+## Few more 
