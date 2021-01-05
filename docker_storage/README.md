@@ -83,3 +83,10 @@ root@fire:~# systemctl daemon-reload
 root@fire:~# systemctl restart docker
 
 ```
+
+## Docker volume NFS type create 
+
+```
+docker volume create --driver local --opt type=nfs --opt o=addr=172.31.15.194,rw --opt device=:/ok  remotevol 
+
+```
