@@ -29,3 +29,8 @@ Step 2/3 : ARG  var1=mysql
 Removing intermediate container 0c127c047ed7
 
 ```
+
+# important tag for building image 
+
+[docker docs] ('https://docs.docker.com/engine/reference/commandline/build/')
+
