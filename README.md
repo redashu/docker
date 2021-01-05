@@ -31,3 +31,10 @@ you can download it from
 ```
 sudo curl https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker.sh
 ```
+
+# Docker context 
+
+## to manage and use multiple docker environment 
+
+[link] ('https://www.docker.com/blog/how-to-deploy-on-remote-docker-hosts-with-docker-compose/')
+
