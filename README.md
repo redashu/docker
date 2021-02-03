@@ -34,3 +34,10 @@ Removing intermediate container 0c127c047ed7
 
 [docker docs] ('https://docs.docker.com/engine/reference/commandline/build/')
 
+
+# Google Distroless 
+
+## Reusing image after building packages from some other images 
+## Incase of multi stage build 
+
+[Google Distroless](https://github.com/GoogleContainerTools/distroless)
