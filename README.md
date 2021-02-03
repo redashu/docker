@@ -22,6 +22,9 @@ docker released in December 21, 2013  <br/>
 	<li> Windows server 2016 and later  </li>
 </ol>
 
+## TO install Docker using Docker Desktop 
+[video](https://www.youtube.com/watch?v=LLXNjtrd4Zk&list=PLB2NsH6aVTpbH-a0Z96k-cc6XGEycdmNH)
+
 ## study and software details 
 For offical website you can browse [docker docs](https://docs.docker.com/)  <br/>
 For docker images you can browser  [docker hub](https://about.gitlab.com/) <br/> 
