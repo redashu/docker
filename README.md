@@ -41,3 +41,10 @@ Removing intermediate container 0c127c047ed7
 ## Incase of multi stage build 
 
 [Google Distroless](https://github.com/GoogleContainerTools/distroless)
+
+
+## Redhat providing base image : UBI (universal base images)
+
+[RHELLINK](https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image)
+
+..
