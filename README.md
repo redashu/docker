@@ -34,3 +34,35 @@ you can download it from
 ```
 sudo curl https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker.sh
 ```
+
+
+## History of using format command in docker 
+
+```
+8771  docker inspect -f '{{.NetworkSettings.IPAddress}}' web1
+ 8772  docker inspect -f '{{.NetworkSettings.Networks.IPAddress}}' web1
+ 8773  docker inspect -f '{{.NetworkSettings.IPAddress}}' web1
+ 8774  docker inspect -f '{{.NetworkSettings.GateWay}}' web1
+ 8775  docker inspect -f '{{.NetworkSettings.Gateway}}' web1
+ 8776  docker inspect -f '{{.State.Status}}' web1
+ 8777  docker inspect -f '{{.Id}}' web1
+ 8778  docker inspect -f '{{.Image}}' web1
+ 8779  docker inspect -f '{{.ResolvConfPath}}' web1
+ 8780* docker inspect -f  '{{.HostConfig}}'
+ 8781* docker inspect -f  '{{.HostConfig}}'  web1
+ 8782* docker inspect -f  '{{.HostConfig.Binds}}'  web1
+ 8783* docker inspect -f  '{{.HostConfig.Binds}}{{end}}'  web1
+ 8784* docker inspect -f  '{{.HostConfig.Binds}}[0]'  web1
+ 8785* docker inspect -f  '{{.HostConfig.Binds}}'  web1
+ 8786* docker inspect -f  '{{.RestartPolicy.Name}}'  web1
+ 8787* docker inspect -f  '{{.HostConfig.RestartPolicy}}'  web1
+ 8788* docker inspect -f  '{{.HostConfig.RestartPolicy.Name}}'  web1
+ 8789* docker inspect -f  '{{.HostConfig.MaskedPaths}}'  web1
+ 8790* docker inspect -f  '{{.Config}}'  web1
+ 8791* docker inspect -f  '{{.Config.Hostname}}'  web1
+ 8792  docker inspect  nginx 
+ 8793* docker inspect -f  '{{.ContainerConfig.cmd}}' nginx 
+ 8794* docker inspect -f  '{{.ContainerConfig.Cmd}}' nginx 
+
+```
+
