@@ -34,3 +34,24 @@ you can download it from
 ```
 sudo curl https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker.sh
 ```
+
+
+# Container security issues 
+
+## How to solve 
+
+```
+docker run --detach-keys="ctrl-p" -it -v /:/mnt/rootdir --name testing busybox
+
+chroot /mnt/rootdir
+
+```
+
+## how to solve 
+
+```
+
+docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i sh
+
+```
+
