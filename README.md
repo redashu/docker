@@ -277,6 +277,21 @@ root@XIA:~# nsenter   -t  285189  --uts   sh
 # 
 
 ```
+### One More amazing Demo 
+
+```
+root@XIA:~# nsenter   -t  285189 --net  --uts --mount  ps 
+PID   USER     TIME  COMMAND
+    1 root      0:00 ping fb.com
+root@XIA:~# 
+root@XIA:~# alias  docker1='nsenter   -t  285189 --net  --uts --mount '
+root@XIA:~# 
+root@XIA:~# docker1 ps
+PID   USER     TIME  COMMAND
+    1 root      0:00 ping fb.com
+
+```
+
 
 
 
