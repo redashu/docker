@@ -68,6 +68,12 @@ sudo curl https://raw.githubusercontent.com/docker/docker-ce/master/components/c
 1.  Control group (cgroup) Namespace
 2.  Time Namespace
 
+## Link for reading purpose 
+
+[Wiki](https://en.wikipedia.org/wiki/Linux_namespaces)
+
+[Opensource](https://opensource.com/article/19/10/namespaces-and-containers-linux)
+
 ### to check ALl possible namespaces In any existing linux based OS process 
 
 ```
