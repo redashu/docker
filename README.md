@@ -184,7 +184,73 @@ lrwxrwxrwx 1 root root 0 Jun  8 12:13 uts -> 'uts:[4026532773]'
 
 ```
 
+## Namespace Game Ball
 
+### create a container 
+
+```
+root@XIA:~# docker run -itd  --name x1 alpine ping fb.com 
+78018ce103a31ded716d0ff451375dfd32ed32ff6992bc59a9eb7bbee89357f5
+root@XIA:~# 
+root@XIA:~# docker ps
+CONTAINER ID   IMAGE          COMMAND            CREATED         STATUS         PORTS     NAMES
+78018ce103a3   alpine         "ping fb.com"      6 seconds ago   Up 5 seconds             x1
+
+```
+
+### Now checking container PID 
+
+```
+root@XIA:~# docker  inspect   x1   --format='{{.State.Pid}}'
+285189
+
+```
+
+### Entering into Network namespace of  COntainer RUning 
+
+```
+root@XIA:~# nsenter   -t  285189 --net  ifconfig 
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.3  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:ac:11:00:03  txqueuelen 0  (Ethernet)
+        RX packets 159  bytes 17562 (17.5 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 120  bytes 11304 (11.3 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+```
+
+### above command is same as THis 
+
+```
+root@XIA:~# docker exec  x1 ifconfig  
+eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:03  
+          inet addr:172.17.0.3  Bcast:172.17.255.255  Mask:255.255.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:230 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:185 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:24963 (24.3 KiB)  TX bytes:17562 (17.1 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+```
+
+
+## So inshort what is happening is -- docker client is just interacting with specific and may be all namespaces in the backend 
 
 
 
