@@ -45,7 +45,7 @@ sudo curl https://raw.githubusercontent.com/docker/docker-ce/master/components/c
 
 ### and many other information and that is shared by  Host Kernel so how Contianer and Host things are not getting conflict 
 
-## So every single thing in container is maintained by namespaces and that is the concept of Kernel 
+###  So every single thing in a container is maintained by namespaces , And Namespace  is the concept of Kernel 
 
 # Linux Namespaces 
 
@@ -68,7 +68,7 @@ sudo curl https://raw.githubusercontent.com/docker/docker-ce/master/components/c
 1.  Control group (cgroup) Namespace
 2.  Time Namespace
 
-### to check ALl possible namespaces In any linux see this 
+### to check ALl possible namespaces In any existing linux based OS process 
 
 ```
 root@XIA:/proc/1/ns# cd  /proc/1/ns/
@@ -76,6 +76,108 @@ root@XIA:/proc/1/ns# ls
 cgroup  ipc  mnt  net  pid  pid_for_children  time  time_for_children  user  uts
 
 ```
+
+
+## List of Namespaces in any linux Machine 
+
+```
+lsns 
+
+===
+
+root@XIA:/proc/1/ns# lsns   |   cut -d" " -f2  |  uniq
+
+cgroup
+pid
+user
+uts
+ipc
+mnt
+net
+mnt
+uts
+mnt
+uts
+mnt
+
+```
+
+##  There are few commands you can use 
+
+1. lsns --- List of all namespaces in Linux Based host
+2. unshare  -- to create a new namespace 
+3. nsenter  -- to enter into existing namespace , also you can run some program in existing namespace 
+
+
+## Creating  Namespaces with some process 
+
+###  Starting a shell in new UTS and Network namespaces 
+
+```
+root@XIA:~# unshare  --uts --net  /bin/sh 
+# ip a 
+1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+# hostname
+XIA
+# hostname C1	
+# hostname
+C1
+# exit
+
+
+root@XIA:~# hostname
+XIA
+
+```
+
+### In above command you can see clearily that SHELL is having its own UTS and Network Namespace s
+### So even if we are chaning the hostname it is not effecting the Hostname of Main Host 
+
+
+## starting a Sleep command in 4 namespaces only 
+
+```
+root@XIA:~# unshare --ipc --uts --net --mount sleep 200 &
+[1] 273452
+root@XIA:~# 
+
+```
+
+### Checking namespace only for Particular PiD 
+
+```
+
+root@XIA:~# lsns  -p  273452 
+        NS TYPE   NPROCS    PID USER COMMAND
+4026531835 cgroup    383      1 root /sbin/init splash
+4026531836 pid       346      1 root /sbin/init splash
+4026531837 user      339      1 root /sbin/init splash
+4026532771 mnt         1 273452 root sleep 200
+4026532773 uts         1 273452 root sleep 200
+4026532774 ipc         1 273452 root sleep 200
+4026532776 net         1 273452 root sleep 200
+
+```
+
+### Using normal linux command you can check namespaces also 
+
+```
+root@XIA:~# ls  -l  /proc/273452/ns  
+total 0
+lrwxrwxrwx 1 root root 0 Jun  8 12:13 cgroup -> 'cgroup:[4026531835]'
+lrwxrwxrwx 1 root root 0 Jun  8 12:13 ipc -> 'ipc:[4026532774]'
+lrwxrwxrwx 1 root root 0 Jun  8 12:13 mnt -> 'mnt:[4026532771]'
+lrwxrwxrwx 1 root root 0 Jun  8 12:13 net -> 'net:[4026532776]'
+lrwxrwxrwx 1 root root 0 Jun  8 12:13 pid -> 'pid:[4026531836]'
+lrwxrwxrwx 1 root root 0 Jun  8 12:15 pid_for_children -> 'pid:[4026531836]'
+lrwxrwxrwx 1 root root 0 Jun  8 12:15 time -> 'time:[4026531834]'
+lrwxrwxrwx 1 root root 0 Jun  8 12:15 time_for_children -> 'time:[4026531834]'
+lrwxrwxrwx 1 root root 0 Jun  8 12:13 user -> 'user:[4026531837]'
+lrwxrwxrwx 1 root root 0 Jun  8 12:13 uts -> 'uts:[4026532773]'
+
+```
+
 
 
 
