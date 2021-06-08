@@ -35,20 +35,47 @@ you can download it from
 sudo curl https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker.sh
 ```
 
-## To connect docker daemon there are number of options from client side 
+# NameSpace  Concept in containers
+
+## We know that each container are having 
+
+1. File System 
+2.  Process 
+3.  Memories  
+
+### and many other information and that is shared by  Host Kernel so how Contianer and Host things are not getting conflict 
+
+## So every single thing in container is maintained by namespaces and that is the concept of Kernel 
+
+# Linux Namespaces 
+
+###  Mainly there are 6 type of namespaces are there 
 
 <ol>
-	<li>docker {cli} </li>
-	<li>docker-compose {orchestration} </li>
-	<li>webUI </li>
-	<li>docker SDK </li>
-	<li>docker API </li>
+	<li> Mount (mnt) </li>
+	<li> Process ID (pid)  </li>
+	<li> Network (net) </li>
+	<li> Interprocess Communication (ipc) </li>
+	<li> UTS (UNIX Time-Sharing)  </li>
+	<li> User ID (user)  </li>
+	
+
 </ol>
 
 
-## Docker API  and SDK 
+## Note: Apart from Above namespaces there are few more 
 
-[Docker Docs URL](https://docs.docker.com/engine/api/sdk/examples/)
+1.  Control group (cgroup) Namespace
+2.  Time Namespace
+
+### to check ALl possible namespaces In any linux see this 
+
+```
+root@XIA:/proc/1/ns# cd  /proc/1/ns/
+root@XIA:/proc/1/ns# ls
+cgroup  ipc  mnt  net  pid  pid_for_children  time  time_for_children  user  uts
+
+```
 
 
 
