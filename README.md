@@ -252,5 +252,31 @@ lo        Link encap:Local Loopback
 
 ## So inshort what is happening is -- docker client is just interacting with specific and may be all namespaces in the backend 
 
+## access Exactly container 
+
+```
+root@XIA:~# nsenter   -t  285189  --uts --mount   sh
+/ # ls
+bin    dev    etc    home   lib    media  mnt    opt    proc   root   run    sbin   srv    sys    tmp    usr    var
+/ # hostname
+78018ce103a3
+/ # cat /etc/os-release 
+NAME="Alpine Linux"
+ID=alpine
+VERSION_ID=3.13.5
+PRETTY_NAME="Alpine Linux v3.13"
+HOME_URL="https://alpinelinux.org/"
+BUG_REPORT_URL="https://bugs.alpinelinux.org/"
+/ # 
+root@XIA:~# nsenter   -t  285189   --mount   sh
+/ # 
+root@XIA:~# nsenter   -t  285189  --uts   sh
+# hostname
+78018ce103a3
+# 
+# 
+
+```
+
 
 
