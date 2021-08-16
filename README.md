@@ -25,12 +25,13 @@ docker released in December 21, 2013  <br/>
 ## TO install Docker using Docker Desktop 
 [video](https://www.youtube.com/watch?v=LLXNjtrd4Zk&list=PLB2NsH6aVTpbH-a0Z96k-cc6XGEycdmNH)
 
-## study and software details 
-For offical website you can browse [docker docs](https://docs.docker.com/)  <br/>
-For docker images you can browser  [docker hub](https://about.gitlab.com/) <br/> 
+## MSQL server as container 
 
-##  Bash Completion for Docker
-you can download it from 
 ```
-sudo curl https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker.sh
+docker run -e 'ACCEPT_EULA=Y' -e 'Mssql099(('    --name 'sql1' -p 1401:1433    -v sql1data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2019-latest
+   
 ```
+
+
+
+
