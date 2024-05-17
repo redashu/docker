@@ -34,3 +34,16 @@ you can download it from
 ```
 sudo curl https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker.sh
 ```
+
+
+### NOTE:  if you are using docker on ubuntu using snap then 
+
+## To run it with non root user 
+
+```
+$ sudo addgroup --system docker
+$ sudo adduser $USER docker
+$ newgrp docker
+$ sudo snap disable docker
+$ sudo snap enable docker
+```
